@@ -21,6 +21,7 @@ const teams = {
 };
 const checkInBtn = document.getElementById('checkInBtn');
 const greetingMessage = document.getElementById('greeting');
+const progressBar = document.getElementById('progressBar');
 
 // Add event listener to the form submission
 checkInBtn.addEventListener('click', function (e) {
@@ -47,6 +48,15 @@ checkInBtn.addEventListener('click', function (e) {
   // Update attendee counter
   counter++;
   attendeeCounter.textContent = counter;
+
+  // Update progress bar width based on percentage of max attendees
+  const progressPercentage = (counter / maxAttendees) * 100;
+  progressBar.style.width = progressPercentage + '%';
+
+  // Turn progress bar green when full
+  if (progressPercentage === 100) {
+    progressBar.classList.add('full');
+  }
 
   // Update team counters
   teams[team].element.textContent = Number(teams[team].element.textContent) + 1;
