@@ -5,10 +5,19 @@ const teamSelect = document.getElementById('teamSelect');
 const attendeeCounter = document.getElementById('attendeeCount');
 const maxAttendees = 50; // Set maximum number of attendees
 let counter = 0; // Initialize counter
-const teamCounters = {
-  water: document.getElementById('waterCount'),
-  zero: document.getElementById('zeroCount'),
-  power: document.getElementById('powerCount'),
+const teams = {
+  water: {
+    element: document.getElementById('waterCount'),
+    name: 'Water Wise',
+  },
+  zero: {
+    element: document.getElementById('zeroCount'),
+    name: 'Net Zero',
+  },
+  power: {
+    element: document.getElementById('powerCount'),
+    name: 'Renewables',
+  },
 };
 const checkInBtn = document.getElementById('checkInBtn');
 const greetingMessage = document.getElementById('greeting');
@@ -41,10 +50,10 @@ checkInBtn.addEventListener('click', function (e) {
   attendeeCounter.textContent = counter;
 
   // Update team counters
-  teamCounters[team].textContent = Number(teamCounters[team].textContent) + 1;
+  teams[team].element.textContent = Number(teams[team].element.textContent) + 1;
 
   // Display greeting message
-  greetingMessage.textContent = `🎉 Welcome, ${name} from team ${team}!`;
+  greetingMessage.textContent = `🎉 Welcome, ${name} from team ${teams[team].name}!`;
   console.log('Added greeting message:', greetingMessage.textContent);
 
   // Clean up any previous animation state
