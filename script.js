@@ -28,10 +28,9 @@ checkInBtn.addEventListener('click', function (e) {
 
   // Check if maximum attendees limit is reached
   if (counter === maxAttendees) {
-    alert('Maximum number of attendees reached. Please try again later.');
     greetingMessage.textContent =
       '🎉 Everybody has checked in! Please wait for the event to start.';
-    greetingMessage.style.backgroundColor = '#28a745'; // Change background color to green
+    greetingMessage.style.backgroundColor = '#c4ffd1'; // Change background color to green
     return;
   }
 
