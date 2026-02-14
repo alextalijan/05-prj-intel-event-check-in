@@ -12,7 +12,6 @@ const teamCounters = {
 };
 const checkInBtn = document.getElementById('checkInBtn');
 const greetingMessage = document.getElementById('greeting');
-let greetingTimeoutId = null; // Track the hide timer
 
 // Add event listener to the form submission
 checkInBtn.addEventListener('click', function (e) {
@@ -23,6 +22,7 @@ checkInBtn.addEventListener('click', function (e) {
     alert('Maximum number of attendees reached. Please try again later.');
     greetingMessage.textContent =
       '🎉 Everybody has checked in! Please wait for the event to start.';
+    greetingMessage.style.backgroundColor = '#28a745'; // Change background color to green
     return;
   }
 
@@ -49,31 +49,12 @@ checkInBtn.addEventListener('click', function (e) {
 
   // Clean up any previous animation state
   greetingMessage.classList.remove('show'); // Remove enter animation class
-  greetingMessage.classList.remove('hide'); // Remove exit animation class
   greetingMessage.style.display = 'block'; // Make visible
   void greetingMessage.offsetWidth; // Force reflow to restart animation
   greetingMessage.classList.add('show'); // Trigger slide-down animation
 
   // Shift form down while greeting is visible
   form.classList.add('shifted');
-
-  // Cancel any previous hide timer
-  if (greetingTimeoutId) {
-    clearTimeout(greetingTimeoutId);
-  }
-
-  // Hide and slide-up after 2 seconds
-  greetingTimeoutId = setTimeout(function () {
-    greetingMessage.classList.remove('show'); // Stop enter animation
-    greetingMessage.classList.add('hide'); // Start slide-up animation
-    form.classList.remove('shifted'); // Slide form back up at same time
-
-    // Hide greeting after animation completes
-    setTimeout(function () {
-      greetingMessage.style.display = 'none';
-      greetingMessage.classList.remove('hide');
-    }, 300); // Match the 300ms slide-up animation
-  }, 2000); // Wait 2 seconds before sliding up
 
   // Reset form fields
   form.reset();
