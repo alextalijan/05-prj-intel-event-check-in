@@ -27,14 +27,6 @@ const progressBar = document.getElementById('progressBar');
 checkInBtn.addEventListener('click', function (e) {
   e.preventDefault(); // Prevent default form submission behavior
 
-  // Check if maximum attendees limit is reached
-  if (counter === maxAttendees) {
-    greetingMessage.textContent =
-      '🎉 Everybody has checked in! Please wait for the event to start.';
-    greetingMessage.style.backgroundColor = '#c4ffd1'; // Change background color to green
-    return;
-  }
-
   // Get values from form fields
   const name = attendeeName.value;
   const team = teamSelect.value;
@@ -42,6 +34,12 @@ checkInBtn.addEventListener('click', function (e) {
   // Validate form fields
   if (!name || !team) {
     alert('Please fill in all fields.');
+    return;
+  }
+
+  // Check if maximum attendees limit is already reached
+  if (counter === maxAttendees) {
+    alert('Maximum number of attendees reached. Please try again later.');
     return;
   }
 
@@ -61,18 +59,72 @@ checkInBtn.addEventListener('click', function (e) {
   // Update team counters
   teams[team].element.textContent = Number(teams[team].element.textContent) + 1;
 
-  // Display greeting message
-  greetingMessage.textContent = `🎉 Welcome, ${name} from team ${teams[team].name}!`;
-  console.log('Added greeting message:', greetingMessage.textContent);
+  // Check if this was the last attendee
+  if (counter === maxAttendees) {
+    // Display greeting message for the last person
+    greetingMessage.textContent = `🎉 Welcome, ${name} from team ${teams[team].name}!`;
 
-  // Clean up any previous animation state
-  greetingMessage.classList.remove('show'); // Remove enter animation class
-  greetingMessage.style.display = 'block'; // Make visible
-  void greetingMessage.offsetWidth; // Force reflow to restart animation
-  greetingMessage.classList.add('show'); // Trigger slide-down animation
+    // Clean up any previous animation state
+    greetingMessage.classList.remove('show'); // Remove enter animation class
+    greetingMessage.style.display = 'block'; // Make visible
+    void greetingMessage.offsetWidth; // Force reflow to restart animation
+    greetingMessage.classList.add('show'); // Trigger slide-down animation
 
-  // Shift form down while greeting is visible
-  form.classList.add('shifted');
+    // Shift form down while greeting is visible
+    form.classList.add('shifted');
+
+    // Wait 2 seconds then show the winner announcement
+    setTimeout(function () {
+      // Determine the winning team(s)
+      let maxCount = -1;
+
+      // First pass: find the maximum count
+      for (const teamKey in teams) {
+        const teamCount = Number(teams[teamKey].element.textContent);
+        if (teamCount > maxCount) {
+          maxCount = teamCount;
+        }
+      }
+
+      // Second pass: find all teams with the maximum count
+      const winningTeams = [];
+      for (const teamKey in teams) {
+        const teamCount = Number(teams[teamKey].element.textContent);
+        if (teamCount === maxCount) {
+          winningTeams.push(teams[teamKey].name);
+        }
+      }
+
+      // Display winner or tie message
+      let messageText;
+      if (winningTeams.length > 1) {
+        messageText = `🏆 It's a tie! ${winningTeams.join(' and ')} are tied with ${maxCount} attendees each!`;
+      } else {
+        messageText = `🏆 Congratulations! Team ${winningTeams[0]} wins with ${maxCount} attendees!`;
+      }
+
+      greetingMessage.textContent = messageText;
+      greetingMessage.style.backgroundColor = '#c4ffd1'; // Keep green background
+
+      // Restart animation for winner message
+      greetingMessage.classList.remove('show'); // Remove enter animation class
+      void greetingMessage.offsetWidth; // Force reflow to restart animation
+      greetingMessage.classList.add('show'); // Trigger slide-down animation
+    }, 2000);
+  } else {
+    // Display greeting message for regular attendees
+    greetingMessage.textContent = `🎉 Welcome, ${name} from team ${teams[team].name}!`;
+    console.log('Added greeting message:', greetingMessage.textContent);
+
+    // Clean up any previous animation state
+    greetingMessage.classList.remove('show'); // Remove enter animation class
+    greetingMessage.style.display = 'block'; // Make visible
+    void greetingMessage.offsetWidth; // Force reflow to restart animation
+    greetingMessage.classList.add('show'); // Trigger slide-down animation
+
+    // Shift form down while greeting is visible
+    form.classList.add('shifted');
+  }
 
   // Reset form fields
   form.reset();
