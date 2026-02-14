@@ -96,6 +96,11 @@ body {
   background-color: #f8fafc;
   border-radius: 16px;
   text-align: center;
+  transition: transform 300ms ease; /* Smooth form movement with greeting */
+}
+
+.check-in.shifted {
+  transform: translateY(15px); /* Move down when greeting appears */
 }
 
 .form-group {
@@ -252,7 +257,40 @@ button .fas {
   color: #333;
   margin-bottom: 15px;
   display: none;
+  opacity: 0; /* Start hidden for animation */
+  transform: translateY(-20px); /* Start above for slide-down */
   background-color: rgb(215, 243, 255);
+}
+
+#greeting.show {
+  display: block;
+  animation: greeting-slide-down 500ms ease forwards; /* Slide down over 500ms */
+}
+
+#greeting.hide {
+  animation: greeting-slide-up 300ms ease forwards; /* Slide up over 300ms */
+}
+
+@keyframes greeting-slide-down {
+  from {
+    opacity: 0; /* Start transparent */
+    transform: translateY(-20px); /* Start above */
+  }
+  to {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Slide to position */
+  }
+}
+
+@keyframes greeting-slide-up {
+  from {
+    opacity: 1; /* Start visible */
+    transform: translateY(0); /* Start in position */
+  }
+  to {
+    opacity: 0; /* Fade out */
+    transform: translateY(-20px); /* Slide back up */
+  }
 }
 
 .success-message {
