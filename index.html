@@ -65,27 +65,30 @@
 
       <!-- Team stats -->
       <div class="team-stats">
-        <h3>Team Attendance</h3>
+        <div class="team-stats-header">
+          <h3>Team Attendance</h3>
+          <button id="resetBtn" class="reset-btn">
+            <i class="fas fa-redo"></i>
+          </button>
+        </div>
         <div class="teams-grid">
-          <div class="team-card water">
+          <div class="team-card water" id="waterCard">
             <span class="team-name">🌊 Team Water Wise</span>
             <span class="team-count" id="waterCount">0</span>
+            <div class="attendee-list" id="waterList"></div>
           </div>
-          <div class="team-card zero">
+          <div class="team-card zero" id="zeroCard">
             <span class="team-name">🌿 Team Net Zero</span>
             <span class="team-count" id="zeroCount">0</span>
+            <div class="attendee-list" id="zeroList"></div>
           </div>
-          <div class="team-card power">
+          <div class="team-card power" id="powerCard">
             <span class="team-name">⚡ Team Renewables</span>
             <span class="team-count" id="powerCount">0</span>
+            <div class="attendee-list" id="powerList"></div>
           </div>
         </div>
       </div>
-
-      <!-- Reset button -->
-      <button id="resetBtn" class="reset-btn">
-        <i class="fas fa-redo"></i> Reset Attendance
-      </button>
     </div>
 
     <footer class="footer">

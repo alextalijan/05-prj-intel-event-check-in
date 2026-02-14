@@ -1,4 +1,4 @@
-/* Modern reset */
+/* ===== GLOBAL & RESET ===== */
 * {
   margin: 0;
   padding: 0;
@@ -13,17 +13,7 @@ body {
   min-height: 100vh;
 }
 
-/* Add form label styling */
-.form-label {
-  display: block;
-  text-align: left;
-  margin-bottom: 15px;
-  color: #475569;
-  padding-left: 5px;
-  font-weight: 500;
-}
-
-/* Hero Section */
+/* ===== HERO SECTION ===== */
 .hero {
   background:
     linear-gradient(
@@ -76,140 +66,7 @@ body {
   color: white;
 }
 
-/* Main container */
-.container {
-  max-width: 700px;
-  width: 90%;
-  margin: 0 auto 20px;
-  padding: 26px;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 5px 24px rgba(0, 60, 116, 0.07);
-  text-align: center;
-}
-
-/* Check-in form */
-.check-in {
-  width: 100%;
-  margin: 0 auto;
-  padding: 30px;
-  background-color: #f8fafc;
-  border-radius: 16px;
-  text-align: center;
-  transition: transform 300ms ease; /* Smooth form movement with greeting */
-}
-
-.check-in.shifted {
-  transform: translateY(15px); /* Move down when greeting appears */
-}
-
-.form-group {
-  display: flex;
-  gap: 15px;
-  width: 100%;
-}
-
-/* Form elements */
-input {
-  flex: 1;
-  padding: 16px 20px;
-  border: 2px solid rgba(0, 0, 0, 0.08);
-  border-radius: 12px;
-  font-size: 17px;
-  font-weight: 500;
-  background: white;
-  color: #2c3e50;
-  transition: all 0.3s ease;
-  outline: none;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
-}
-
-input:focus {
-  border-color: #0071c5;
-  box-shadow: 0 0 0 4px rgba(0, 113, 197, 0.15);
-}
-
-button {
-  background-color: #0071c5;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  padding: 0 28px;
-  min-width: 160px;
-  height: 56px;
-  font-size: 17px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 113, 197, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-button:hover {
-  background-color: #005a9e;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0, 113, 197, 0.3);
-}
-
-#checkInBtn {
-  flex-shrink: 0;
-  white-space: nowrap;
-}
-
-/* Reset button styling */
-.reset-btn {
-  background-color: #94a3b8;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  padding: 0 24px;
-  height: 44px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(148, 163, 184, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 20px auto 0;
-}
-
-.reset-btn:hover {
-  background-color: #64748b;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(148, 163, 184, 0.3);
-}
-
-/* Icon spacing */
-.fas {
-  margin-right: 8px;
-}
-
-button .fas {
-  font-size: 18px;
-  margin-right: 10px;
-}
-
-.attendance-header i {
-  font-size: 22px;
-  margin-right: 8px;
-}
-
-/* Attendance section spacing */
-.attendance-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin-bottom: 15px;
-  font-size: 17px;
-  color: #64748b;
-}
-
-/* Attendance tracker styling */
+/* ===== ATTENDANCE TRACKER ===== */
 .attendance-tracker {
   max-width: 700px;
   width: 90%;
@@ -228,6 +85,12 @@ button .fas {
   color: #64748b;
 }
 
+.attendance-header i {
+  color: #0071c5;
+  font-size: 20px;
+  margin-right: 4px;
+}
+
 #attendeeCount {
   color: #0071c5;
   font-size: 24px;
@@ -235,19 +98,12 @@ button .fas {
   margin: 0 2px;
 }
 
-.attendance-header i {
-  color: #0071c5;
-  font-size: 20px;
-  margin-right: 4px;
-}
-
-/* Max attendees text */
 .attendance-header span:last-child {
   color: #64748b;
   font-size: 17px;
 }
 
-/* Progress container - simplified */
+/* Progress container */
 .progress-container {
   width: 100%;
   max-width: 500px;
@@ -274,12 +130,20 @@ button .fas {
   background-image: linear-gradient(90deg, #28a745, #20c997);
 }
 
-/* Adjust spacing between components */
+/* ===== MAIN CONTAINER ===== */
 .container {
+  max-width: 700px;
+  width: 90%;
+  margin: 0 auto 20px;
+  padding: 26px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 5px 24px rgba(0, 60, 116, 0.07);
+  text-align: center;
   margin-top: 0;
 }
 
-/* Messages */
+/* ===== GREETING MESSAGE ===== */
 #greeting {
   font-weight: 500;
   font-size: 18px;
@@ -329,15 +193,249 @@ button .fas {
   color: #003c71;
 }
 
-/* Counter */
-#attendeeCount {
-  color: #0071c5;
-  font-size: 24px;
-  font-weight: 700;
-  margin: 0 2px;
+/* ===== CHECK-IN FORM ===== */
+.check-in {
+  width: 100%;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #f8fafc;
+  border-radius: 16px;
+  text-align: center;
+  transition: transform 300ms ease; /* Smooth form movement with greeting */
 }
 
-/* Footer */
+.check-in.shifted {
+  transform: translateY(15px); /* Move down when greeting appears */
+}
+
+.form-label {
+  display: block;
+  text-align: left;
+  margin-bottom: 15px;
+  color: #475569;
+  padding-left: 5px;
+  font-weight: 500;
+}
+
+.form-group {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+}
+
+/* Input wrapper for name and team select */
+.input-wrapper {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+  min-width: 0;
+}
+
+/* Input fields */
+input {
+  flex: 1;
+  padding: 16px 20px;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 500;
+  background: white;
+  color: #2c3e50;
+  transition: all 0.3s ease;
+  outline: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+input:focus {
+  border-color: #0071c5;
+  box-shadow: 0 0 0 4px rgba(0, 113, 197, 0.15);
+}
+
+/* Select field */
+select {
+  padding: 16px;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 500;
+  background: white;
+  color: #2c3e50;
+  cursor: pointer;
+  min-width: 140px;
+}
+
+/* ===== BUTTONS ===== */
+button {
+  background-color: #0071c5;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 0 28px;
+  height: 56px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 113, 197, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:hover {
+  background-color: #005a9e;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 113, 197, 0.3);
+}
+
+#checkInBtn {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Reset button styling */
+.reset-btn {
+  background-color: #94a3b8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px;
+  height: 32px;
+  width: max-content;
+  font-size: 14px;
+  min-width: auto;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(148, 163, 184, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.reset-btn:hover {
+  background-color: #64748b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(148, 163, 184, 0.3);
+}
+
+/* Icon spacing */
+
+button .fas {
+  font-size: 18px;
+  margin-right: 2px;
+}
+
+/* ===== TEAM STATS SECTION ===== */
+.team-stats {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 2px solid #f1f5f9;
+}
+
+.team-stats-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.team-stats h3 {
+  color: #64748b;
+  font-size: 16px;
+  margin: 0;
+}
+
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+/* Team card styling */
+.team-card {
+  padding: 15px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.team-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.team-card.expanded {
+  padding-bottom: 20px;
+}
+
+/* Team card colors */
+.team-card.water {
+  background-color: #e8f7fc;
+}
+
+.team-card.zero {
+  background-color: #ecfdf3;
+}
+
+.team-card.power {
+  background-color: #fff7ed;
+}
+
+.team-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #475569;
+}
+
+/* Attendee list styling */
+.attendee-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height 0.3s ease,
+    opacity 0.3s ease;
+  margin-top: 8px;
+  padding: 10px;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.team-card.expanded .attendee-list {
+  max-height: 300px;
+  opacity: 1;
+}
+
+.attendee-item {
+  font-size: 14px;
+  color: #475569;
+  padding: 5px 0;
+  text-align: left;
+}
+
+.attendee-empty {
+  font-size: 14px;
+  color: #475569;
+  opacity: 0.8;
+  padding: 5px 0;
+  text-align: left;
+}
+
+/* ===== FOOTER ===== */
 .footer {
   text-align: center;
   padding: 40px 20px;
@@ -355,78 +453,16 @@ button .fas {
   text-decoration: underline;
 }
 
-/* Input wrapper for name and team select */
-.input-wrapper {
-  flex: 1;
-  display: flex;
-  gap: 10px;
-  min-width: 0;
-}
-
-select {
-  padding: 16px;
-  border: 2px solid rgba(0, 0, 0, 0.08);
-  border-radius: 12px;
-  font-size: 17px;
-  font-weight: 500;
-  background: white;
-  color: #2c3e50;
-  cursor: pointer;
-  min-width: 140px;
-}
-
-/* Team Stats */
-.team-stats {
-  margin-top: 30px;
-  padding-top: 30px;
-  border-top: 2px solid #f1f5f9;
-}
-
-.team-stats h3 {
-  color: #64748b;
-  font-size: 16px;
-  margin-bottom: 20px;
-}
-
-.teams-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-}
-
-.team-card {
-  padding: 15px;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-/* Team card colors */
-.team-card.water {
-  background-color: #e8f7fc;
-}
-.team-card.zero {
-  background-color: #ecfdf3;
-}
-.team-card.power {
-  background-color: #fff7ed;
-}
-
-.team-name {
-  font-size: 15px;
-  font-weight: 500;
-  color: #475569;
-}
-
-/* Mobile responsive */
+/* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
   .hero {
     padding: 35px 20px;
   }
+
   .hero h1 {
     font-size: 38px;
   }
+
   .container {
     padding: 32px;
     margin: 0 15px 30px;
