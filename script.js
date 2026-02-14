@@ -22,6 +22,65 @@ const teams = {
 const checkInBtn = document.getElementById('checkInBtn');
 const greetingMessage = document.getElementById('greeting');
 const progressBar = document.getElementById('progressBar');
+const resetBtn = document.getElementById('resetBtn');
+
+// Function to save data to localStorage
+function saveData() {
+  const data = {
+    counter: counter,
+    water: Number(teams.water.element.textContent),
+    zero: Number(teams.zero.element.textContent),
+    power: Number(teams.power.element.textContent),
+  };
+  localStorage.setItem('attendanceData', JSON.stringify(data));
+}
+
+// Function to load data from localStorage
+function loadData() {
+  const savedData = localStorage.getItem('attendanceData');
+  if (savedData) {
+    const data = JSON.parse(savedData);
+    counter = data.counter;
+    attendeeCounter.textContent = counter;
+    teams.water.element.textContent = data.water;
+    teams.zero.element.textContent = data.zero;
+    teams.power.element.textContent = data.power;
+
+    // Update progress bar based on loaded counter
+    const progressPercentage = (counter / maxAttendees) * 100;
+    progressBar.style.width = progressPercentage + '%';
+    if (progressPercentage === 100) {
+      progressBar.classList.add('full');
+    }
+  }
+}
+
+// Load data when page loads
+loadData();
+
+// Function to reset all data
+function resetAllData() {
+  const confirmed = confirm(
+    'Are you sure you want to reset all attendance data? This cannot be undone.',
+  );
+  if (confirmed) {
+    counter = 0;
+    attendeeCounter.textContent = '0';
+    teams.water.element.textContent = '0';
+    teams.zero.element.textContent = '0';
+    teams.power.element.textContent = '0';
+    progressBar.style.width = '0%';
+    progressBar.classList.remove('full');
+    greetingMessage.style.display = 'none';
+    greetingMessage.style.backgroundColor = 'rgb(215, 243, 255)';
+    localStorage.clear();
+  }
+}
+
+// Add click event listener to reset button
+resetBtn.addEventListener('click', function () {
+  resetAllData();
+});
 
 // Add event listener to the form submission
 checkInBtn.addEventListener('click', function (e) {
@@ -58,6 +117,9 @@ checkInBtn.addEventListener('click', function (e) {
 
   // Update team counters
   teams[team].element.textContent = Number(teams[team].element.textContent) + 1;
+
+  // Save data to localStorage
+  saveData();
 
   // Check if this was the last attendee
   if (counter === maxAttendees) {
